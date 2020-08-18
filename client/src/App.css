@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono|Raleway:400,900');
+
+
+:root {
+  --font-header: 'Raleway', sans-serif;
+  --font-code: 'Fira Mono', monospace;
+  --color-text: #f0f0f0;
+  --color-background-l: #b9a98f;
+  --color-background: #2d399c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-header);
+  color: var(--color-text);
+  background: linear-gradient(to bottom right, var(--color-background-l), var(--color-background));
+}
+
+
+/* display the slideshow in the center of the viewport */
+.App {
+  width: 90%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.Slideshow {
+  /* display the contents of the slideshow in a single column */
+  display: flex;
+  flex-direction: column;
+}
+/* style the different elements shown in the slides as wanted  */
+.Slideshow h1 {
+  /* title bold and centered */
+  text-align: center;
+  font-size: calc(3rem + 4vw);
+  margin: 1rem 0;
+  font-weight: 500;
+}
+.Slideshow h3 {
+  /* subtitle thin and spreading a bit more than the title */
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+  text-align: center;
+}
+.Slideshow h2 {
+  /* header capitalized */
+  text-transform: capitalize;
+  font-size: 2.5rem;
+}
+.Slideshow p {
+  /* paragraphs with a capped width  */
+  width: 90vw;
+  max-width: 500px;
+  line-height: 2;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  letter-spacing: 0.1rem;
+}
+.Slideshow code {
+  /* code with the chosen font and a solid border-left */
+  font-family: var(--font-code);
+  font-size: 1.5rem;
+  line-height: 2;
+  border-left: 4px solid white;
+  margin: 1rem 0;
+  padding: 0 1rem;
+}
+
+/* for smaller viewports reduce the size of the paragraphs and of the code */
+@media (max-width: 600px) {
+  .Slideshow p, .Slideshow code {
+    font-size: 1rem;
+  }
+}
+
+
+.Controls {
+  /* absolute position the buttons in the bottom center of the page */
+  position: absolute;
+  bottom: 1rem;
+  /* -4rem to account for 1) the border-size and 1) the horizontal margin of the buttons */
+  left: calc(50% - 4rem);
+}
+.Controls button {
+  /* include arrows with border properties instead of normal buttons */
+  width: 0;
+  height: 0;
+  background: none;
+  border: none;
+  margin: 0 1rem;
+  color: rgba(255, 255, 255, 0.5);
+  /* transition to smoothen the hover and active states */
+  transition: all 0.2s ease-out;
+}
+/* on hover increase the opacity of the buttons */
+.Controls button:hover {
+  color: rgba(255, 255, 255, 1);
+}
+/* when active, resize the buttons */
+.Controls button:active {
+  transform: scale(1.15);
+}
+.Controls button:nth-of-type(1) {
+  /* through currentColor, the buttons are styled with the same hue */
+  border-right: 1rem solid currentColor;
+  border-bottom: 1rem solid transparent;
+  border-left: 1rem solid transparent;
+  border-top: 1rem solid transparent;
+}
+.Controls button:nth-of-type(2) {
+  border-right: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
+  border-left: 1rem solid currentColor;
+  border-top: 1rem solid transparent;
+}
